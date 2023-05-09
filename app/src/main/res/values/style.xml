@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="bodyCss">
+        <item name="android:background">@color/lightBrown</item>
+    </style>
+
+    <style name="mainSlogan">
+        <item name="android:fontFamily">@font/dmsans_bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="hintText">
+        <item name="android:fontFamily">@font/dmsans_medium</item>
+        <item name="android:textColorHint">@color/lightGray</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:drawablePadding">20sp</item>
+        <item name="android:textColor">@color/darkBrown</item>
+        <item name="android:hint"></item>
+    </style>
+
+    <style name="whiteLink">
+        <item name="android:fontFamily">@font/dmsans_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="brownLink">
+        <item name="android:fontFamily">@font/dmsans_medium</item>
+        <item name="android:textColor">@color/darkBrown</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="fontFamily">@font/dmsans_bold</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:fontFamily">@font/dmsans_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="subtitle">
+        <item name="android:textColor">@color/lightGray</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="profileBackground">
+        <item name="android:background">@drawable/profile_background</item>
+    </style>
+
+    <style name="profileLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">40dp</item>
+    </style>
+
+    <style name="profileIcon">
+        <item name="android:textColor">@color/darkBrown</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:layout_weight">0.2</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="profileText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/dmsans_bold</item>
+        <item name="android:layout_width">210sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+</resources>

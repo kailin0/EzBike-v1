@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user_management.ProfileFragment"
+    android:background="@color/lightBrown">
+
+    <View
+        android:id="@+id/profileView"
+        style="@style/profileBackground"
+        android:layout_width="409dp"
+        android:layout_height="580dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></View>
+
+    <TextView
+        android:id="@+id/textViewMyAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:fontFamily="@font/dmsans_bold"
+        android:text="@string/myAcc"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/profileView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/userRow"
+        style="@style/profileLayout"
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageViewName"
+            style="@style/profileIcon"
+            android:layout_marginRight="30sp"
+            app:srcCompat="@drawable/ic_name" />
+
+        <FrameLayout
+            android:id="@+id/frameLayoutName"
+            android:layout_width="230sp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imageViewName">
+
+            <TextView
+                android:id="@+id/textViewName"
+                style="@style/profileText"
+                android:inputType="text"
+                android:text="@string/name" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                style="@style/profileText"
+                android:background="@drawable/edittext_background"
+                android:inputType="text"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonName"
+            style="@style/profileIcon"
+            android:layout_toEndOf="@+id/frameLayoutName"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <ImageButton
+            android:id="@+id/imageButtonName2"
+            style="@style/profileIcon"
+            android:layout_toEndOf="@+id/frameLayoutName"
+            app:srcCompat="@drawable/ic_check"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pswRow"
+        style="@style/profileLayout"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userRow">
+
+        <ImageButton
+            android:id="@+id/imageViewPsw"
+            style="@style/profileIcon"
+            android:layout_marginRight="30sp"
+            app:srcCompat="@drawable/ic_lock" />
+
+        <FrameLayout
+            android:id="@+id/frameLayoutPsw"
+            android:layout_width="230sp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imageViewPsw">
+
+            <TextView
+                android:id="@+id/textViewPsw"
+                style="@style/profileText"
+                android:text="@string/changePsw" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonPsw"
+            style="@style/profileIcon"
+            android:layout_toEndOf="@+id/frameLayoutPsw"
+            app:srcCompat="@drawable/ic_next" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/phoneRow"
+        style="@style/profileLayout"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pswRow">
+
+        <ImageButton
+            android:id="@+id/imageViewPhone"
+            style="@style/profileIcon"
+            android:layout_marginRight="30sp"
+            app:srcCompat="@drawable/ic_phone" />
+
+        <FrameLayout
+            android:id="@+id/frameLayoutPhone"
+            android:layout_width="230sp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imageViewPhone">
+
+            <TextView
+                android:id="@+id/textViewPhone"
+                style="@style/profileText"
+                android:inputType="text"
+                android:text="@string/contactNo" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                style="@style/profileText"
+                android:background="@drawable/edittext_background"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonPhone"
+            style="@style/profileIcon"
+            android:layout_toEndOf="@+id/frameLayoutPhone"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <ImageButton
+            android:id="@+id/imageButtonPhone2"
+            style="@style/profileIcon"
+            android:layout_toEndOf="@+id/frameLayoutPhone"
+            app:srcCompat="@drawable/ic_check"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dobRow"
+        style="@style/profileLayout"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneRow">
+
+        <ImageButton
+            android:id="@+id/imageViewDob"
+            style="@style/profileIcon"
+            android:layout_marginRight="30sp"
+            app:srcCompat="@drawable/ic_calendar" />
+
+        <FrameLayout
+            android:id="@+id/frameLayoutDob"
+            android:layout_width="230sp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imageViewDob">
+
+            <TextView
+                android:id="@+id/textViewDob"
+                style="@style/profileText"
+                android:inputType="text"
+                android:text="@string/calendar" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonDob"
+            style="@style/profileIcon"
+            android:layout_toEndOf="@+id/frameLayoutDob"
+            app:srcCompat="@drawable/ic_edit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/credibilityRow"
+        style="@style/profileLayout"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dobRow">
+
+        <ImageButton
+            android:id="@+id/imageViewCredibility"
+            style="@style/profileIcon"
+            android:layout_marginRight="30sp"
+            app:srcCompat="@drawable/ic_credibility" />
+
+        <FrameLayout
+            android:id="@+id/frameLayoutCredibility"
+            android:layout_width="230sp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imageViewCredibility">
+
+            <TextView
+                android:id="@+id/textViewCredibility"
+                style="@style/profileText"
+                android:inputType="text"
+                android:text="@string/credibility" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonCredibility"
+            style="@style/profileIcon"
+            android:layout_toEndOf="@+id/frameLayoutCredibility"
+            app:srcCompat="@drawable/ic_next" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonLogout"
+        style="@style/button"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/credibilityRow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

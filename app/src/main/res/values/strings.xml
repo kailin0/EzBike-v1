@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">EZBIKE</string>
+    <string name="slogan1">Zero Emission</string>
+    <string name="slogan2">Maximum Fun</string>
+    <string name="slogan3">- Ride free, Ride green, Ride happy -</string>
+    <string name="email">EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="forgetPsw">Forgotten your password?</string>
+    <string name="login">Login</string>
+    <string name="noAcc">No account?</string>
+    <string name="createOne">Create One</string>
+    <string name="submit">SUBMIT</string>
+    <string name="myAcc">My Account</string>
+    <string name="logout">LOGOUT</string>
+    <string name="credibility">Credibility</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgetPswNav">Forget Password</string>
+    <string name="enterOTP">EnterOTP</string>
+    <string name="resetPsw">Reset Password</string>
+    <string name="scrollView">This is scroll view</string>
+    <string name="requestOTP">Request OTP</string>
+    <string name="verificationTitle">Enter 4-digit verification code</string>
+    <string name="verificationSubtitle">Code is sent to ****n@gmail.com. The  code will expire in 01:32</string>
+    <string name="otpCode"> </string>
+    <string name="otpCodeContent">This is OTP</string>
+    <string name="next">NEXT</string>
+    <string name="confirmPsw">CONFIRM PASSWORD</string>
+    <string name="save">SAVE</string>
+    <string name="name">NAME</string>
+    <string name="contactNo">CONTACT NO.</string>
+    <string name="dob">DOB</string>
+    <string name="createAcc">CREATE ACCOUNT</string>
+    <string name="haveAcc">Have Account?</string>
+    <string name="changePsw">Change Password</string>
+    <string name="newPsw">NEW PASSWORD</string>
+    <string name="home">Home</string>
+    <string name="calendar">CALENDAR</string>
+</resources>

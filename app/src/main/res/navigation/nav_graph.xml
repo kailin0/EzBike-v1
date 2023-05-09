@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/nav_login">
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="my.edu.tarc.ezbike_v1.user_management.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_nav_login_to_nav_forgetPsw"
+            app:destination="@id/nav_forgetPsw" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_forgetPsw"
+        android:name="my.edu.tarc.ezbike_v1.user_management.ForgetPswFragment"
+        android:label="fragment_forget_psw"
+        tools:layout="@layout/fragment_forget_psw" >
+        <action
+            android:id="@+id/action_nav_forgetPsw_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_enterOtp"
+        android:name="my.edu.tarc.ezbike_v1.user_management.EnterOtpFragment"
+        android:label="@string/enterOTP"
+        tools:layout="@layout/fragment_enter_o_t_p" >
+        <action
+            android:id="@+id/action_nav_enterOtp_to_nav_resetPsw"
+            app:destination="@id/nav_resetPsw" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_resetPsw"
+        android:name="my.edu.tarc.ezbike_v1.user_management.ResetPswFragment"
+        android:label="@string/resetPsw"
+        tools:layout="@layout/fragment_reset_psw" />
+    <fragment
+        android:id="@+id/nav_changePsw"
+        android:name="my.edu.tarc.ezbike_v1.user_management.ChangePswFragment"
+        android:label="@string/changePsw"
+        tools:layout="@layout/fragment_change_psw" />
+</navigation>

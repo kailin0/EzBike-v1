@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "986591154447",
+    "project_id": "ezbike-56ff6",
+    "storage_bucket": "ezbike-56ff6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986591154447:android:517fa3bb8dd06b8d1eae7a",
+        "android_client_info": {
+          "package_name": "my.edu.tarc.ezbike_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986591154447-m8pe0f2phfr8llqiha8f7hal5bipoo9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkOtJMp22WW_ovfEI8oWVDwenC00xu-Ug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986591154447-m8pe0f2phfr8llqiha8f7hal5bipoo9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986591154447:android:1df0fd520c4e5ad41eae7a",
+        "android_client_info": {
+          "package_name": "my.edu.tarc.ezbike_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986591154447-m8pe0f2phfr8llqiha8f7hal5bipoo9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkOtJMp22WW_ovfEI8oWVDwenC00xu-Ug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986591154447-m8pe0f2phfr8llqiha8f7hal5bipoo9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
