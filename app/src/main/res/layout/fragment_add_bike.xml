@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/lightBrown"
+    android:contentDescription="@string/etpaBikeSerial"
+    tools:context=".adminSide.ui.bike.AddBikeFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/homepage_background"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="0dp">
+
+        <TextView
+            android:id="@+id/tvBikeSerialNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:drawableLeft="@drawable/baseline_location_on_24"
+            android:text="@string/bike_serial_no"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+        <Button
+            android:id="@+id/btnAddNewBike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="550dp"
+            android:backgroundTint="@color/darkBrown"
+            android:minWidth="180dp"
+            android:text="@string/btnAddNewLoction"
+            android:textSize="34sp"
+            android:visibility="visible"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etptBikeSerialNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/add_bike_hint"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="#4D020202"
+            app:layout_constraintStart_toStartOf="@+id/tvBikeSerialNo"
+            app:layout_constraintTop_toBottomOf="@+id/tvBikeSerialNo" />
+
+        <Button
+            android:id="@+id/btnSaveBike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="550dp"
+            android:backgroundTint="@color/darkBrown"
+            android:minWidth="180dp"
+            android:text="@string/btnSave"
+            android:textSize="34sp"
+            android:visibility="invisible"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnDeleteBike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:minWidth="180dp"
+            android:text="@string/btnDelete"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:visibility="invisible"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSaveBike" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/bicycle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnQR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/lightGray"
+            android:drawableLeft="@drawable/baseline_qr_code_24"
+            android:text="@string/getQR"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/etptBikeSerialNo"
+            app:layout_constraintTop_toBottomOf="@+id/etptBikeSerialNo"
+            app:strokeWidth="2dp" />
+
+        <ImageView
+            android:id="@+id/ivQR"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/btnQR"
+            app:layout_constraintTop_toBottomOf="@+id/etptBikeSerialNo" />
+
+        <RadioGroup
+            android:id="@+id/bikeAvailability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:checkedButton="@id/radioButtonAvailable"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/btnQR"
+            app:layout_constraintTop_toBottomOf="@+id/btnQR">
+
+            <RadioButton
+                android:id="@+id/radioButtonAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_btn_available" />
+
+            <RadioButton
+                android:id="@+id/radioButtonUnavailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/radio_btn_unavailable" />
+
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

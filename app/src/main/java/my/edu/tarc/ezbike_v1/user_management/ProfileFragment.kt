@@ -2,14 +2,17 @@ package my.edu.tarc.ezbike_v1.user_management
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import my.edu.tarc.ezbike_v1.MainActivity
@@ -19,7 +22,7 @@ import java.util.*
 import java.util.Calendar.*
 import kotlin.collections.HashMap
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), MenuProvider {
 
     private lateinit var binding: FragmentProfileBinding
     private lateinit var firebaseAuth: FirebaseAuth
@@ -31,6 +34,20 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
+        loadData()
+
+
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        loadData()
+    }
+
+    private fun loadData(){
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
         firebaseAuth = FirebaseAuth.getInstance()
 
         val textViewName: TextView = binding.textViewName
@@ -62,10 +79,6 @@ class ProfileFragment : Fragment() {
             buttonName2.visibility = View.VISIBLE
         }
 
-        buttonPsw.setOnClickListener {
-            //Navigate to change psw fragment
-        }
-
         buttonContact.setOnClickListener{
             textViewContact.visibility = View.GONE
             editTextContact.visibility = View.VISIBLE
@@ -76,7 +89,7 @@ class ProfileFragment : Fragment() {
 
         buttonName2.setOnClickListener {
             val name = editTextName.text
-            if(name != null){
+            if(name.isNotEmpty()){
                 textViewName.text = name
                 textViewName.visibility = View.VISIBLE
                 editTextName.visibility = View.GONE
@@ -84,13 +97,18 @@ class ProfileFragment : Fragment() {
                 buttonName2.visibility = View.GONE
 
                 storeUser(name.toString(), "name", "Name")
+            } else{
+                textViewName.visibility = View.VISIBLE
+                editTextName.visibility = View.GONE
+                buttonName.visibility = View.VISIBLE
+                buttonName2.visibility = View.GONE
             }
         }
 
         buttonContact2.setOnClickListener {
             val contactNo = editTextContact.text
             val regexContact = Regex("^(01)[0-46-9]-[0-9]{7,8}\$")
-            if(contactNo != null){
+            if(contactNo.isNotEmpty()){
                 if(regexContact.matches(contactNo)){
                     textViewContact.text = contactNo
                     textViewContact.visibility = View.VISIBLE
@@ -102,6 +120,11 @@ class ProfileFragment : Fragment() {
                 } else{
                     Toast.makeText(activity, "Invalid contact no. format. Eg: 012-4567788", Toast.LENGTH_SHORT).show()
                 }
+            } else{
+                textViewContact.visibility = View.VISIBLE
+                editTextContact.visibility = View.GONE
+                buttonContact.visibility = View.VISIBLE
+                buttonContact2.visibility = View.GONE
             }
         }
 
@@ -120,10 +143,10 @@ class ProfileFragment : Fragment() {
                     textViewDob.text = dobStr
                     storeUser(dobStr, "dob", "Date of Birth")
                 } else if(age > 80){
-                    Toast.makeText(activity, "Overage", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Please make sure you are 80 years old and below", Toast.LENGTH_SHORT).show()
                     getUserData(textViewName, textViewContact, textViewDob)
                 } else {
-                    Toast.makeText(activity, "Underage", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Please make sure you are 13 years old and above", Toast.LENGTH_SHORT).show()
                     getUserData(textViewName, textViewContact, textViewDob)
                 }
             }
@@ -131,12 +154,11 @@ class ProfileFragment : Fragment() {
         }
 
         buttonPsw.setOnClickListener {
-            val intent = Intent(activity, ChangePsw::class.java)
-            startActivity(intent)
+            findNavController().navigate(R.id.action_nav_profile_to_changePswFragment)
         }
 
         buttonCredibility.setOnClickListener {
-            //navigate to credibility page
+            findNavController().navigate(R.id.action_nav_profile_to_credibilityFragment)
         }
 
         buttonLogout.setOnClickListener{
@@ -146,8 +168,6 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
             requireActivity().finish()
         }
-
-        return binding.root
     }
 
     class DateDialogFragment(
@@ -180,24 +200,54 @@ class ProfileFragment : Fragment() {
     private fun getUserData(textViewName: TextView, textViewContact: TextView, textViewDob: TextView){
 
         db = FirebaseFirestore.getInstance()
-
         val email = firebaseAuth.currentUser?.email
-        val userRef = db.collection("user").document(email!!)
-        userRef.get()
-            .addOnSuccessListener {
-                if(it != null){
-                    textViewName.text = it.data?.get("name")?.toString()
-                    textViewContact.text = it.data?.get("contactNo")?.toString()
-                    textViewDob.text = it.data?.get("dob")?.toString()
+
+        val sharedPreferences = activity?.getSharedPreferences("preference", Context.MODE_PRIVATE)
+
+        if(sharedPreferences?.getString("email", "") == email){
+            val name = sharedPreferences?.getString("name", "")
+            val contactNo = sharedPreferences?.getString("contactNo", "")
+            val dob = sharedPreferences?.getString("dob", "")
+
+            if(name?.isNotEmpty() == true && contactNo?.isNotEmpty() == true && dob?.isNotEmpty() == true){
+                textViewName.text = name
+                textViewContact.text = contactNo
+                textViewDob.text = dob
+
+            } else {
+                val userRef = db.collection("user").document(email!!)
+                userRef.get()
+                    .addOnSuccessListener {
+                        if(it != null){
+                            textViewName.text = it.data?.get("name")?.toString()
+                            textViewContact.text = it.data?.get("contactNo")?.toString()
+                            textViewDob.text = it.data?.get("dob")?.toString()
+                        }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(activity, "Data retrieval fail", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        } else{
+            val userRef = db.collection("user").document(email!!)
+            userRef.get()
+                .addOnSuccessListener {
+                    if(it != null){
+                        textViewName.text = it.data?.get("name")?.toString()
+                        textViewContact.text = it.data?.get("contactNo")?.toString()
+                        textViewDob.text = it.data?.get("dob")?.toString()
+                    }
                 }
-            }
-            .addOnFailureListener {
-                Toast.makeText(activity, "Data retrieval fail", Toast.LENGTH_SHORT).show()
-            }
+                .addOnFailureListener {
+                    Toast.makeText(activity, "Data retrieval fail", Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 
     private fun storeUser(input: String, fieldName: String, msg: String){
 
+        val sharedPreferences = activity?.getSharedPreferences("preference", Context.MODE_PRIVATE)
+        val editor = sharedPreferences?.edit()
         val db = FirebaseFirestore.getInstance()
         val email = firebaseAuth.currentUser?.email
 
@@ -211,47 +261,77 @@ class ProfileFragment : Fragment() {
                     val credibility = it.data?.get("credibility")?.toString()?.toInt()
 
                     var userMap: HashMap<String, Any?> = HashMap()
-                    if(fieldName == "name"){
-                        userMap = hashMapOf(
-                            fieldName to input,
-                            "email" to email,
-                            "contactNo" to contactNo,
-                            "dob" to dob,
-                            "credibility" to credibility)
+                    when (fieldName) {
+                        "name" -> {
+                            userMap = hashMapOf(
+                                fieldName to input,
+                                "email" to email,
+                                "contactNo" to contactNo,
+                                "dob" to dob,
+                                "credibility" to credibility)
 
-                    } else if(fieldName == "contact"){
-                        userMap = hashMapOf(
-                            "name" to name,
-                            "email" to email,
-                            fieldName to input,
-                            "dob" to dob,
-                            "credibility" to credibility)
-                    } else{
-                        userMap = hashMapOf(
-                            "name" to name,
-                            "email" to email,
-                            "contactNo" to contactNo,
-                            fieldName to input,
-                            "credibility" to credibility)
+                            editor?.putString("name", input)
+                            editor?.putString("email", email)
+                            editor?.putString("contactNo", contactNo)
+                            editor?.putString("dob", dob)
+                            editor?.apply()
+
+                        }
+                        "contactNo" -> {
+                            userMap = hashMapOf(
+                                "name" to name,
+                                "email" to email,
+                                fieldName to input,
+                                "dob" to dob,
+                                "credibility" to credibility)
+
+                            editor?.putString("name", name)
+                            editor?.putString("email", email)
+                            editor?.putString("contactNo", input)
+                            editor?.putString("dob", dob)
+                            editor?.apply()
+
+                        }
+                        else -> {
+                            userMap = hashMapOf(
+                                "name" to name,
+                                "email" to email,
+                                "contactNo" to contactNo,
+                                fieldName to input,
+                                "credibility" to credibility)
+
+                            editor?.putString("name", name)
+                            editor?.putString("email", email)
+                            editor?.putString("contactNo", contactNo)
+                            editor?.putString("dob", input)
+                            editor?.apply()
+                        }
                     }
+
 
                     db.collection("user").document(email!!).set(userMap)
                         .addOnSuccessListener {
-                            Toast.makeText(activity, msg + " updated", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, "$msg updated", Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener{
-                            Toast.makeText(activity, "Fail to update " + msg, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, "Fail to update $msg", Toast.LENGTH_SHORT).show()
                         }
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(activity, "Fail to update " + msg, Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Fail to update $msg", Toast.LENGTH_SHORT).show()
             }
+    }
 
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater){
+        menu.findItem(R.id.action_profile).isVisible = false;
+    }
 
-
-
-
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if(menuItem.itemId == android.R.id.home){
+            findNavController().navigateUp()
+        }
+        return true
     }
 
 }

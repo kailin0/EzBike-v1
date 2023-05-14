@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBrown"
+    android:contentDescription="@string/etpaLocationaddress"
+    tools:context=".adminSide.ui.location.AddLocationFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/homepage_background"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvLocationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:text="@string/tvLocationName"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+            android:drawableLeft="@drawable/baseline_location_on_24"/>
+
+        <TextView
+            android:id="@+id/tvLocationAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="@string/tvLocationAddress"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/tvLocationName"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocationName"
+            android:drawableLeft="@drawable/baseline_location_on_24"/>
+
+        <Button
+            android:id="@+id/btnAddNewLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/darkBrown"
+            android:minWidth="180dp"
+            android:text="@string/btnAddNewLoction"
+            android:textSize="34sp"
+            android:visibility="visible"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etpaLocationAddress" />
+
+        <EditText
+            android:id="@+id/etpaLocationAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="15"
+            android:hint="@string/etpaLocationaddress"
+            android:inputType="textPostalAddress"
+            android:minHeight="48dp"
+            android:textColorHint="#4D020202"
+            app:layout_constraintStart_toStartOf="@+id/tvLocationAddress"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocationAddress" />
+
+        <EditText
+            android:id="@+id/etptLocaationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/etptLocationName"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="#4D020202"
+            app:layout_constraintStart_toStartOf="@+id/tvLocationName"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocationName" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/darkBrown"
+            android:minWidth="180dp"
+            android:text="@string/btnSave"
+            android:textSize="34sp"
+            android:visibility="invisible"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etpaLocationAddress" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:minWidth="180dp"
+            android:text="@string/btnDelete"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:visibility="invisible"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

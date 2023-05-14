@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user_management.LoginFragment"
-    >
+    tools:context=".user_management.LoginFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/hintText"
@@ -14,24 +13,23 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="25dp"
-        app:boxBackgroundColor="@color/lightBrown"
         android:drawableStart="@drawable/ic_email"
         android:ems="10"
         android:inputType="textEmailAddress"
+        app:boxBackgroundColor="@color/lightBrown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextEmail"
+            style="@style/hintText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            style="@style/hintText"
             android:drawableStart="@drawable/ic_email"
             android:ems="10"
             android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            />
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -81,26 +79,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewForget" />
 
-    <TextView
-        android:id="@+id/textViewNoAcc"
-        style="@style/whiteLink"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/noAcc"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin">
 
-    <TextView
-        android:id="@+id/textViewCreate"
-        style="@style/brownLink"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/createOne"
-        app:layout_constraintStart_toEndOf="@+id/textViewNoAcc"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        <TextView
+            android:id="@+id/textViewNoAcc"
+            style="@style/whiteLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/noAcc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
+        <TextView
+            android:id="@+id/textViewCreate"
+            style="@style/brownLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/createOne"
+            app:layout_constraintStart_toEndOf="@+id/textViewNoAcc"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogin"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:backgroundTint="#34A89894"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FABtnEditLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="3dp"
+        android:clickable="true"
+        android:contentDescription="@string/FABtnLocationEdit"
+        app:backgroundTint="#00FFFFFF"
+        app:elevation="0dp"
+        app:srcCompat="@drawable/ic_edit" />
+
+    <LinearLayout
+        android:id="@+id/editDetail"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:backgroundTint="#33A89894"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDBLocationName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/tvDBLocationAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textSize="24sp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

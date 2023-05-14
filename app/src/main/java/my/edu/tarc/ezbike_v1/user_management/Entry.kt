@@ -8,21 +8,30 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ezbike_v1.MainActivity
 import my.edu.tarc.ezbike_v1.R
+import my.edu.tarc.ezbike_v1.adminSide.ui.admin.AdminHomeActivity
 import my.edu.tarc.ezbike_v1.databinding.ActivityRegistrationBinding
 
 class Entry : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
 
+    //Let user who login before to use the app without signing in again
     public override fun onStart() {
         super.onStart()
 
         firebaseAuth = Firebase.auth
+        val email = firebaseAuth.currentUser?.email
 
         val currentUser = firebaseAuth.currentUser
         if (currentUser != null) {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            if(email == "ezbike111@gmail.com"){
+                val intent = Intent(this, AdminHomeActivity::class.java)
+                startActivity(intent)
+            } else{
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 

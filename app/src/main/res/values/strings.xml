@@ -13,9 +13,18 @@
     <string name="myAcc">My Account</string>
     <string name="logout">LOGOUT</string>
     <string name="credibility">Credibility</string>
-
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="homeTitleText">Hi</string>
+    <string name="homeWelcomeText">Welcome to EzBike</string>
+    <string name="credibilityCount">100</string>
+    <string name="credibilityText1">Pending for 1 day</string>
+    <string name="credibilityText2">Pending for 1 week</string>
+    <string name="credibilityText3">Pending for 1 month</string>
+    <string name="credibilityText4">Pending for 2 months</string>
+    <string name="locationText">View Location</string>
+    <string name="lend">Lend</string>
+    <string name="returnText">Return</string>
+    <string name="returnText2">Return in</string>
+    <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
     <string name="forgetPswNav">Forget Password</string>
     <string name="enterOTP">EnterOTP</string>
     <string name="resetPsw">Reset Password</string>
@@ -37,4 +46,99 @@
     <string name="newPsw">NEW PASSWORD</string>
     <string name="home">Home</string>
     <string name="calendar">CALENDAR</string>
+
+
+    <!--customer-->
+    <string name="lendBike">Lend A Bike</string>
+    <string name="lendBikePromptMsg">Scan the QR code on bike you preferred</string>
+    <string name="startTime">Start Time</string>
+    <string name="endTime">End Time</string>
+    <string name="require">Required</string>
+    <string name="back_to_home">BACK TO HOME</string>
+
+    <!--lend status-->
+    <string name="yahoo">Yahoo!</string>
+    <string name="oops">Oops!</string>
+    <string name="yahoo_desc">Your Bike is Ready To Use</string>
+    <string name="oops_desc">The Bike Is Unavailable</string>
+    <string name="mainten">The Bike Is Under Maintenance</string>
+    <string name="invalidqr">Invalid QR Code</string>
+
+    <!--return page-->
+    <string name="take_pic_desc">Take the picture of the bike you lend together with the return location</string>
+    <string name="scanqr">SCAN QR</string>
+    <string name="scan_desc">Scan the QR code on bike you lend</string>
+    <string name="take_pic">TAKE PIC</string>
+
+    <!--return status-->
+    <string name="success">Successful!</string>
+    <string name="tq">Thanks for using EzBike</string>
+    <string name="tq_overtime">Thanks for using EzBike, but your credential has decreased</string>
+    <string name="credibilty">Credibility</string>
+    <string name="pending1">Pending for 1 day</string>
+    <string name="pending2">Pending for 1 week</string>
+    <string name="pending3">Pending for 1 month</string>
+    <string name="pending4">Pending for 2 months</string>
+
+    <string name="duration_hint">Select the lend bike duration</string>
+    <string-array name="duration">
+        <item>30 Minutes</item>
+        <item>1 Hour</item>
+        <item>1 Hour 30 Minutes</item>
+        <item>2 Hours</item>
+        <item>3 Hours</item>
+        <item>4 Hours</item>
+        <item>1 Minute</item>
+    </string-array>
+    <string name="not_ur">Different Bike</string>
+
+
+    <!-- admin -->
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btnLogin">Login</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="toolbarViewLocationList">MANAGE LOCATION</string>
+    <string name="manageLocation_title">MANAGE LOCATION</string>
+    <string name="search_location">Search</string>
+    <string name="login_title">Login</string>
+    <string name="locationList_title">MANAGE LOCATION</string>
+    <string name="FABtn_logout">Logout</string>
+    <string name="admin_name">Hi Admin</string>
+    <string name="welcome_msg">Welcome to EzBike</string>
+    <string name="manage">Manage</string>
+    <string name="btnLocation">Location</string>
+    <string name="btnBike">Bike</string>
+    <string name="FABtnAddLocation">Add Location</string>
+    <string name="tvLocationName">Location Name</string>
+    <string name="tvLocationAddress">Location Address</string>
+    <string name="btnAddNewLoction">Add</string>
+    <string name="etpaLocationaddress">Input Location Address</string>
+    <string name="etptLocationName">Input Location Name</string>
+    <string name="db_location_name">Location Name</string>
+    <string name="db_location_address">Location Address</string>
+    <string name="FABtnLocationEdit">Edit Location</string>
+    <string name="btnEdit">Edit</string>
+    <string name="btnSave">Save</string>
+    <string name="btnDelete">Delete</string>
+    <string name="btnClearAll">Clear All</string>
+    <string name="search_icon">Search</string>
+    <string name="location_add_success">Yahoo!</string>
+    <string name="location_add_success_msg">The Location is added</string>
+    <string name="bike_add_success_msg">The Bike is added</string>
+    <string name="btnBack">Back</string>
+    <string name="location_add_fail_msg">The Location already exist</string>
+    <string name="bike_add_fail_msg">The Bike Serial.No already exist</string>
+    <string name="location_add_fail">Oops!</string>
+    <string name="location_add_update_msg">The Location is updated</string>
+    <string name="bike_add_update_msg">The Bike is updated</string>
+    <string name="location_add_delete_msg">The Location is deleted</string>
+    <string name="bike_add_delete_msg">The Bike is deleted</string>
+    <string name="bike_serial_no">Bike Serial Number</string>
+    <string name="getQR">QR Generate</string>
+    <string name="add_bike_hint">Bike serial number</string>
+    <string name="etpaBikeSerial">Bike Serial</string>
+    <string name="FABtnAddBike">Add Bike</string>
+    <string name="radio_btn_available">Available</string>
+    <string name="radio_btn_unavailable">Unavailable</string>
 </resources>

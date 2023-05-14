@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_nav"
+    app:startDestination="@id/nav_adminFragment">
+
+    <fragment
+        android:id="@+id/nav_adminFragment"
+        android:name="my.edu.tarc.ezbike_v1.adminSide.ui.admin.AdminFragment"
+        android:label="Admin"
+        tools:layout="@layout/fragment_admin">
+        <action
+            android:id="@+id/action_nav_adminFragment_to_nav_locationFragment"
+            android:parentActivityName=".action_nav_adminFragment"
+            app:destination="@id/nav_locationFragment" />
+        <action
+            android:id="@+id/action_nav_adminFragment_to_nav_bikeFragment"
+            app:destination="@id/nav_bikeFragment" />
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/nav_loginFragment"-->
+<!--        android:name="my.edu.tarc.ezbike_v1.adminSide.db"-->
+<!--        android:label="Login"-->
+<!--        tools:layout="@layout/fragment_login"/>-->
+    <fragment
+        android:id="@+id/nav_locationFragment"
+        android:name="my.edu.tarc.ezbike_v1.adminSide.ui.location.LocationFragment"
+        android:label="Manage Location"
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_nav_locationFragment_to_addLocationFragment"
+            app:destination="@id/nav_addLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_addLocationFragment"
+        android:name="my.edu.tarc.ezbike_v1.adminSide.ui.location.AddLocationFragment"
+        android:label="Add Location"
+        tools:layout="@layout/fragment_add_location">
+        <action
+            android:id="@+id/action_nav_addLocationFragment_to_locationSuccessFragment"
+            app:destination="@id/locationSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationSuccessFragment"
+        android:name="my.edu.tarc.ezbike_v1.adminSide.ui.location.LocationSuccessFragment"
+        android:label="fragment_location_success"
+        tools:layout="@layout/fragment_location_success" />
+    <fragment
+        android:id="@+id/nav_bikeFragment"
+        android:name="my.edu.tarc.ezbike_v1.adminSide.ui.bike.BikeFragment"
+        android:label="fragment_bike"
+        tools:layout="@layout/fragment_bike">
+        <action
+            android:id="@+id/action_nav_bikeFragment_to_nav_addBikeFragment"
+            app:destination="@id/nav_addBikeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_addBikeFragment"
+        android:name="my.edu.tarc.ezbike_v1.adminSide.ui.bike.AddBikeFragment"
+        android:label="fragment_add_bike"
+        tools:layout="@layout/fragment_add_bike">
+        <action
+            android:id="@+id/action_nav_addBikeFragment_to_nav_bikeMsgFragment"
+            app:destination="@id/nav_bikeMsgFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_bikeMsgFragment"
+        android:name="my.edu.tarc.ezbike_v1.adminSide.ui.bike.BikeMsgFragment"
+        android:label="fragment_bike_msg"
+        tools:layout="@layout/fragment_bike_msg" />
+</navigation>

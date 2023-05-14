@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import my.edu.tarc.ezbike_v1.MainActivity
 import my.edu.tarc.ezbike_v1.R
+import my.edu.tarc.ezbike_v1.adminSide.ui.admin.AdminHomeActivity
 import my.edu.tarc.ezbike_v1.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -47,8 +48,14 @@ class LoginFragment : Fragment() {
 
                 firebaseAuth.signInWithEmailAndPassword(email, psw).addOnCompleteListener{
                     if(it.isSuccessful) {
-                        val intent = Intent(activity, MainActivity::class.java)
-                        startActivity(intent)
+                        if(email == "ezbike111@gmail.com"){
+                            val intent = Intent(activity, AdminHomeActivity::class.java)
+                            startActivity(intent)
+                        } else{
+                            val intent = Intent(activity, MainActivity::class.java)
+                            startActivity(intent)
+                        }
+
                     } else{
                         Toast.makeText(activity, it.exception.toString(), Toast.LENGTH_SHORT).show()
                     }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/bodyCss"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer.LendActivity"
+    tools:layout_editor_absoluteX="6dp"
+    tools:layout_editor_absoluteY="64dp"
+    android:id="@+id/container">
+
+
+    <Spinner
+        android:id="@+id/spinner_duration"
+        android:layout_width="240dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
+        android:entries="@array/duration"
+        android:prompt="@string/duration_hint"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/btnScanQR"
+        style="@style/button"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="60dp"
+        android:text="scan QR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewLendMsgPrompt"
+        style="@style/scanDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/lendBikePromptMsg"
+        app:layout_constraintBottom_toTopOf="@+id/btnScanQR"
+        app:layout_constraintEnd_toEndOf="@+id/btnScanQR"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/btnScanQR" />
+
+    <ImageView
+        android:id="@+id/bikelogo"
+        android:layout_width="401dp"
+        android:layout_height="221dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ezbikelogo" />
+
+    <TextView
+        android:id="@+id/textView12"
+        style="@style/scanDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/duration_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bikelogo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

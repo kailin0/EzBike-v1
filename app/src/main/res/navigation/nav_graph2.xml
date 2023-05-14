@@ -18,5 +18,22 @@
         android:id="@+id/nav_profile"
         android:name="my.edu.tarc.ezbike_v1.user_management.ProfileFragment"
         android:label="@string/myAcc"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_nav_profile_to_changePswFragment"
+            app:destination="@id/nav_changePsw" />
+        <action
+            android:id="@+id/action_nav_profile_to_credibilityFragment"
+            app:destination="@id/nav_credibility" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_changePsw"
+        android:name="my.edu.tarc.ezbike_v1.user_management.ChangePswFragment"
+        android:label="@string/changePsw"
+        tools:layout="@layout/fragment_change_psw" />
+    <fragment
+        android:id="@+id/nav_credibility"
+        android:name="my.edu.tarc.ezbike_v1.user_management.CredibilityFragment"
+        android:label="@string/credibility"
+        tools:layout="@layout/fragment_credibility" />
 </navigation>

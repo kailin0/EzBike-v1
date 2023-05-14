@@ -2,6 +2,7 @@ package my.edu.tarc.ezbike_v1.user_management
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,18 +24,6 @@ class Registration : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
-    //Change to loading page later
-//    public override fun onStart() {
-//        super.onStart()
-//
-//        firebaseAuth = Firebase.auth
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        val currentUser = firebaseAuth.currentUser
-//        if (currentUser != null) {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +40,25 @@ class Registration : AppCompatActivity() {
 
         val dobBtn = binding.buttonDob
         dobBtn.setOnClickListener {
-            val dateDialogFragment = DateDialogFragment{
-                    year, month, day ->
-                binding.buttonDob.text = String.format("%02d/%02d/%d", day, month+1, year)
+            val dateDialogFragment = DateDialogFragment { year, month, day ->
+                val dobStr = String.format("%02d/%02d/%d", day, month + 1, year)
+                val dob = getInstance()
+                with(dob){
+                    set(YEAR, year)
+                    set(MONTH, month)
+                    set(DAY_OF_MONTH, day)
+                }
+                val today = getInstance()
+                val age = daysBetween(dob, today).div(365)
+                if(age in 13..80){
+                    binding.buttonDob.text = dobStr
+                } else if(age > 80){
+                    Toast.makeText(this, "Please make sure you are 80 years old and below", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Please make sure you are 13 years old and above", Toast.LENGTH_SHORT).show()
+                }
             }
-            dateDialogFragment.show(supportFragmentManager,
-                "DateDialog")
+            dateDialogFragment.show(supportFragmentManager, "DateDialog")
         }
 
         val createBtn: Button = binding.buttonCreate
@@ -75,7 +77,8 @@ class Registration : AppCompatActivity() {
                 if(regexContact.matches(contactNo)){
                     if(psw == cPsw){
                         createUser(email, psw)
-                        storeUser(name, email, contactNo, dob)
+                        storeUserPref(name, email, contactNo, dob)
+                        storeUserFirestore(name, email, contactNo, dob)
 
                     } else{
                         binding.editTextConfirmPsw.error = "Confirm password does not match"
@@ -84,15 +87,15 @@ class Registration : AppCompatActivity() {
                     binding.editTextPhone.error = "Invalid contact no. format. Eg: 012-4567788"
                 }
             } else {
-                if(name.isNullOrEmpty())
+                if(name.isEmpty())
                     binding.editTextName.error = "Name is required"
-                if(email.isNullOrEmpty())
+                if(email.isEmpty())
                     binding.editTextEmail.error ="Email is required"
-                if(psw.isNullOrEmpty())
+                if(psw.isEmpty())
                     binding.editTextPsw.error = "Password is required"
-                if(cPsw.isNullOrEmpty())
+                if(cPsw.isEmpty())
                     binding.editTextConfirmPsw.error = "Confirm password is required"
-                if(contactNo.isNullOrEmpty())
+                if(contactNo.isEmpty())
                     binding.editTextPhone.error = "Contact No. is required"
                 if(!(regexDob.matches(dob)))
                     binding.buttonDob.error = "Date of birth is required"
@@ -100,11 +103,12 @@ class Registration : AppCompatActivity() {
         }
     }
 
+
     class DateDialogFragment(
         val dateSetListener:(year: Int, month: Int, day: Int) -> Unit): DialogFragment(),
         DatePickerDialog.OnDateSetListener{
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            val c = Calendar.getInstance()
+            val c = getInstance()
             val year = c.get(YEAR)
             val month = c.get(MONTH)
             val day = c.get(DAY_OF_MONTH)
@@ -117,6 +121,17 @@ class Registration : AppCompatActivity() {
         }
     }
 
+    private fun daysBetween(startDate: Calendar, endDate: Calendar?): Long {
+        val date = startDate.clone() as Calendar
+        var daysBetween: Long = 0
+        while (date.before(endDate)) {
+            date.add(DAY_OF_MONTH, 1)
+            daysBetween++
+        }
+        return daysBetween
+    }
+
+
     private fun createUser(email: String, psw: String){
         firebaseAuth.createUserWithEmailAndPassword(email, psw).addOnCompleteListener{
             if(it.isSuccessful){
@@ -127,7 +142,18 @@ class Registration : AppCompatActivity() {
         }
     }
 
-    private fun storeUser(name: String, email: String, contactNo: String, dob: String){
+    private fun storeUserPref(name: String, email: String, contactNo: String, dob: String) {
+        val sharedPreferences = getSharedPreferences("preference", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putString("name", name)
+            putString("email", email)
+            putString("contactNo", contactNo)
+            putString("dob", dob)
+        }.apply()
+    }
+
+    private fun storeUserFirestore(name: String, email: String, contactNo: String, dob: String){
 
         val db = FirebaseFirestore.getInstance()
 
