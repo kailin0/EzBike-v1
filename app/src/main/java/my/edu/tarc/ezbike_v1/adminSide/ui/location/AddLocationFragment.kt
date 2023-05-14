@@ -178,8 +178,8 @@ class AddLocationFragment : Fragment() {
 
     //clear input after press "Add" button
     private fun clearInput(){
-        binding.etptLocaationName.text.clear()
-        binding.etpaLocationAddress.text.clear()
+        binding.etptLocaationName.text?.clear()
+        binding.etpaLocationAddress.text?.clear()
     }
 
 

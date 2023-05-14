@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminSide.ui.admin.AdminHomeActivity"
-    style="@style/bodyCss">
-
-
+    tools:context=".adminSide.ui.admin.AdminHomeActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_fragment_admin"
