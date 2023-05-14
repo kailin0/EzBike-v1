@@ -7,9 +7,7 @@
     tools:context=".adminSide.ui.admin.AdminHomeActivity"
     style="@style/bodyCss">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_fragment_admin"
@@ -40,5 +38,5 @@
 <!--                app:defaultNavHost="true"-->
 <!--                app:navGraph="@navigation/nav_graph_admin" />-->
 <!--        </LinearLayout>-->
-    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
