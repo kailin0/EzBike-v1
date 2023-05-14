@@ -32,4 +32,6 @@ interface bikeDAO {
     @Query("SELECT * FROM Bike_data_table WHERE bike_serial_no = :serialNO")
     fun getBikeByserialNO(serialNO: Int): BikeData?
 
+    @Query("SELECT bike_availability FROM Bike_data_table WHERE bike_Serial_no = :serialNO")
+    fun getBikeAvailability(serialNO: Int): BikeData?
 }

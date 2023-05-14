@@ -18,80 +18,115 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/constraintLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="0dp">
 
-        <TextView
-            android:id="@+id/tvBikeSerialNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:drawableLeft="@drawable/baseline_location_on_24"
-            android:text="@string/bike_serial_no"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvBikeSerialNo"-->
+<!--            style="@style/profileText"-->
+<!--            android:background="@color/lightGray"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="80dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="@string/bike_serial_no"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imageView6" />-->
 
         <Button
             android:id="@+id/btnAddNewBike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="550dp"
+            style="@style/button"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
             android:backgroundTint="@color/darkBrown"
             android:minWidth="180dp"
             android:text="@string/btnAddNewLoction"
-            android:textSize="34sp"
             android:visibility="visible"
-            app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/bikeAvailability" />
 
-        <EditText
-            android:id="@+id/etptBikeSerialNo"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/hintText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:orientation="vertical"
+            android:textColorHint="@color/darkBrown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etptBikeSerialNo"
+                style="@style/hintText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/lightGray"
+                android:drawableStart="@drawable/ic_bike_brown"
+                android:ems="10"
+                android:hint="@string/bike_serial_no"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/imageView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/add_bike_hint"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColorHint="#4D020202"
-            app:layout_constraintStart_toStartOf="@+id/tvBikeSerialNo"
-            app:layout_constraintTop_toBottomOf="@+id/tvBikeSerialNo" />
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/baseline_qr_code_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+<!--        <EditText-->
+<!--            android:id="@+id/etptBikeSerialNo"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:ems="10"-->
+<!--            android:hint="@string/add_bike_hint"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:minHeight="48dp"-->
+<!--            android:textColorHint="#4D020202"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/tvBikeSerialNo"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tvBikeSerialNo" />-->
 
         <Button
             android:id="@+id/btnSaveBike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="550dp"
+            style="@style/button"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
             android:backgroundTint="@color/darkBrown"
-            android:minWidth="180dp"
             android:text="@string/btnSave"
-            android:textSize="34sp"
             android:visibility="invisible"
-            app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/bikeAvailability" />
 
         <Button
             android:id="@+id/btnDeleteBike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
             android:backgroundTint="@color/white"
-            android:minWidth="180dp"
+            android:fontFamily="@font/dmsans_bold"
             android:text="@string/btnDelete"
-            android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textColor="@color/darkBrown"
+            android:textSize="20sp"
             android:visibility="invisible"
-            app:cornerRadius="20dp"
+            app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +134,7 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="250dp"
+            android:layout_width="280dp"
             android:layout_height="250dp"
             android:layout_marginTop="40dp"
             android:src="@drawable/bicycle"
@@ -111,43 +146,50 @@
             android:id="@+id/btnQR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="10dp"
             android:backgroundTint="@color/lightGray"
-            android:drawableLeft="@drawable/baseline_qr_code_24"
             android:text="@string/getQR"
-            android:textColor="@color/black"
+            android:textColor="@color/darkBrown"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/etptBikeSerialNo"
-            app:layout_constraintTop_toBottomOf="@+id/etptBikeSerialNo"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintStart_toEndOf="@+id/imageView12"
+            app:layout_constraintTop_toTopOf="@+id/imageView12"
             app:strokeWidth="2dp" />
 
         <ImageView
             android:id="@+id/ivQR"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
             android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
             app:layout_constraintStart_toEndOf="@+id/btnQR"
-            app:layout_constraintTop_toBottomOf="@+id/etptBikeSerialNo" />
+            app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
         <RadioGroup
             android:id="@+id/bikeAvailability"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:checkedButton="@id/radioButtonAvailable"
             android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@+id/btnQR"
+            app:layout_constraintStart_toStartOf="@+id/imageView12"
             app:layout_constraintTop_toBottomOf="@+id/btnQR">
 
             <RadioButton
                 android:id="@+id/radioButtonAvailable"
+                android:fontFamily="@font/dmsans_medium"
+                android:textColor="@color/darkBrown"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_btn_available" />
 
             <RadioButton
                 android:id="@+id/radioButtonUnavailable"
+                android:fontFamily="@font/dmsans_medium"
+                android:textColor="@color/darkBrown"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

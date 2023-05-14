@@ -195,7 +195,7 @@ class AddBikeFragment : Fragment() {
 
     //clear input after press "Add" button
     private fun clearInput(){
-        binding.etptBikeSerialNo.text.clear()
+        binding.etptBikeSerialNo.text?.clear()
         binding.ivQR.isVisible=false
     }
 

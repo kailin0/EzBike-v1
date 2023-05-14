@@ -6,6 +6,7 @@
     android:layout_marginLeft="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
+    android:layout_marginBottom="15dp"
     android:backgroundTint="#34A89894"
     app:cardCornerRadius="10dp"
     app:cardElevation="0dp">
@@ -27,23 +28,26 @@
         android:id="@+id/editDetail"
         android:layout_width="349dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#33A89894"
         android:clickable="true"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvDBBikeSerial"
+            style="@style/hintText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:textSize="34sp" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/tvDBBikeAvailability"
+            style="@style/hintText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textSize="24sp" />
+            android:layout_marginLeft="5dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
