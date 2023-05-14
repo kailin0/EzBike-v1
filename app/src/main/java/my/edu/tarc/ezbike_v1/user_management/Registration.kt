@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,7 +16,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.type.DateTime
 import my.edu.tarc.ezbike_v1.databinding.ActivityRegistrationBinding
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 import java.util.Calendar.*
 
@@ -79,6 +83,8 @@ class Registration : AppCompatActivity() {
                         createUser(email, psw)
                         storeUserPref(name, email, contactNo, dob)
                         storeUserFirestore(name, email, contactNo, dob)
+
+
 
                     } else{
                         binding.editTextConfirmPsw.error = "Confirm password does not match"
@@ -168,8 +174,38 @@ class Registration : AppCompatActivity() {
         db.collection("user").document(email).set(userMap)
             .addOnSuccessListener {
             Toast.makeText(this, "Thanks for register", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, Entry::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, Entry::class.java)
+//            startActivity(intent)
+            }
+            .addOnFailureListener{
+                Toast.makeText(this, "Register Fail", Toast.LENGTH_SHORT).show()
+            }
+
+        val currentDate = Date()
+        val calendar = Calendar.getInstance()
+        calendar.time = currentDate
+
+        val userMap2 =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                hashMapOf(
+                    "bikeid" to "",
+                    "lastLocation" to 0,
+                    "lendDur" to 0,
+                    "opportunity" to "",
+                    "penalty_date" to calendar.time,
+                    "pending_dur" to 0,
+                    "status" to ""
+                )
+            } else {
+                TODO("VERSION.SDK_INT < O")
+            }
+
+
+        db.collection("user_lend").document(email).set(userMap2)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Thanks for register", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, Entry::class.java)
+                startActivity(intent)
             }
             .addOnFailureListener{
                 Toast.makeText(this, "Register Fail", Toast.LENGTH_SHORT).show()

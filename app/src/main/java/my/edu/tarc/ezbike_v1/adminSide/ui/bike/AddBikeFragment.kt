@@ -1,20 +1,21 @@
 package my.edu.tarc.ezbike_v1.adminSide.ui.bike
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.MenuProvider
 import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.common.BitMatrix
@@ -25,11 +26,13 @@ import my.edu.tarc.ezbike_v1.adminSide.db.locationDB
 import my.edu.tarc.ezbike_v1.adminSide.viewModel.BikeVM
 import my.edu.tarc.ezbike_v1.adminSide.viewModel.BikeVMFactory
 import my.edu.tarc.ezbike_v1.databinding.FragmentAddBikeBinding
+import my.edu.tarc.ezbike_v1.user_management.Entry
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class AddBikeFragment : Fragment() {
+class AddBikeFragment : Fragment(), MenuProvider {
 
+    private lateinit var firebaseAuth: FirebaseAuth
     private var _binding: FragmentAddBikeBinding?= null
     private val binding get() = _binding!!
 
@@ -45,8 +48,11 @@ class AddBikeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         _binding = FragmentAddBikeBinding.inflate(inflater, container, false)
+        firebaseAuth = FirebaseAuth.getInstance()
+        setHasOptionsMenu(true)
 
         if (isBikeEdit){
             binding.btnDeleteBike.isVisible=true
@@ -215,5 +221,14 @@ class AddBikeFragment : Fragment() {
         return bitmap
     }
 
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater){
 
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if(menuItem.itemId == android.R.id.home){
+            findNavController().navigateUp()
+        }
+        return true
+    }
 }

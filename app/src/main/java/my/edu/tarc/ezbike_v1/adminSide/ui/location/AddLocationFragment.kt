@@ -2,13 +2,12 @@ package my.edu.tarc.ezbike_v1.adminSide.ui.location
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
+import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,7 +25,7 @@ import my.edu.tarc.ezbike_v1.adminSide.viewModel.LocationVMFactory
 import my.edu.tarc.ezbike_v1.databinding.FragmentAddLocationBinding
 import kotlin.system.exitProcess
 
-class AddLocationFragment : Fragment() {
+class AddLocationFragment : Fragment(), MenuProvider {
 
     private var _binding: FragmentAddLocationBinding?= null
     private val binding get() = _binding!!
@@ -174,6 +173,17 @@ class AddLocationFragment : Fragment() {
 //        locationVM.deleteAll()
 //        Toast.makeText(requireContext(),"Successfully delete",Toast.LENGTH_SHORT).show()
 
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater){
+
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if(menuItem.itemId == android.R.id.home){
+            findNavController().navigateUp()
+        }
+        return true
     }
 
     //clear input after press "Add" button

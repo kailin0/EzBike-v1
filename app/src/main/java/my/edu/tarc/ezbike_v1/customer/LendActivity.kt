@@ -1,11 +1,14 @@
 package my.edu.tarc.ezbike_v1.customer
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import my.edu.tarc.ezbike_v1.R
 import my.edu.tarc.ezbike_v1.databinding.ActivityLendBinding
 import java.time.Duration
 import java.util.*
@@ -20,6 +23,14 @@ class LendActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLendBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.lightBrown)))
+        supportActionBar!!.elevation = 0F
+        supportActionBar!!.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+        supportActionBar?.apply {
+            title = "LEND A BIKE"
+        }
 
         val scanbtn = binding.btnScanQR
         val spiner = binding.spinnerDuration

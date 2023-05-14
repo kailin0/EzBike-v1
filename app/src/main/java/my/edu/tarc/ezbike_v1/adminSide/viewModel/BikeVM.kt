@@ -12,9 +12,12 @@ import androidx.room.util.query
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import my.edu.tarc.ezbike_v1.adminSide.db.BikeData
 import my.edu.tarc.ezbike_v1.adminSide.db.bikeDAO
@@ -58,6 +61,7 @@ class BikeVM(private val dao: bikeDAO) : ViewModel() {
                     if (bikeData != null) {
                         dao.addBike(bikeData)
                         saveBikesToFirebase()
+                        saveBikesToFirestore()
                     }
                     isBikeSuccess=true
                 }
@@ -122,8 +126,35 @@ class BikeVM(private val dao: bikeDAO) : ViewModel() {
                 updates[bikeRef.path.toString()] = bikeUpdates
             }
             rootNodeRef.updateChildren(updates)
+
         }
     }
+
+    @SuppressLint("RestrictedApi")
+    fun saveBikesToFirestore() {
+        val db = Firebase.firestore
+        val collectionRef = db.collection("bike")
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val bikes = withContext(Dispatchers.IO) {
+                dao.getallBike()
+            }
+            for (bike in bikes) {
+                val bikeUpdates = hashMapOf(
+                    "status" to bike.bikeAvailability
+                )
+                collectionRef.document(bike.bikeSerialNO.toString())
+                    .set(bikeUpdates)
+                    .addOnSuccessListener {
+                        Log.d(TAG, "Bike ${bike.bikeSerialNO} saved to Firestore")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(TAG, "Error saving bike ${bike.bikeSerialNO} to Firestore", e)
+                    }
+            }
+        }
+    }
+
 
 
 }

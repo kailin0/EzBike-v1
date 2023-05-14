@@ -91,6 +91,10 @@ class LocationFragment : Fragment(), MenuProvider{
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if(menuItem.itemId == android.R.id.home){
+            findNavController().navigateUp()
+        }
+
         if(menuItem.itemId == R.id.action_search) {
 //            searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
 //                override fun onQueryTextSubmit(query: String?): Boolean {
@@ -127,6 +131,8 @@ class LocationFragment : Fragment(), MenuProvider{
 
     }
 
+
+
 //    override fun onDestroyView() {
 //        super.onDestroyView()
 //        isEdit=false
@@ -159,6 +165,8 @@ class LocationFragment : Fragment(), MenuProvider{
         })
     }
 
+
+
 //    private fun resetList() {
 //        adaptor.resetList(oriList!!)
 //    }
@@ -167,6 +175,7 @@ class LocationFragment : Fragment(), MenuProvider{
 //        super.onResume()
 //        resetList()
 //    }
+
 
     override fun onDestroy() {
         super.onDestroy()

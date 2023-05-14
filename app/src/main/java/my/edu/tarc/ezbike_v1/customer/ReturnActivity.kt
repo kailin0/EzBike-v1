@@ -2,13 +2,16 @@ package my.edu.tarc.ezbike_v1.customer
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import my.edu.tarc.ezbike_v1.R
 import my.edu.tarc.ezbike_v1.databinding.ActivityReturnBinding
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -22,6 +25,13 @@ class ReturnActivity : AppCompatActivity() {
         binding = ActivityReturnBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.lightBrown)))
+        supportActionBar!!.elevation = 0F
+        supportActionBar!!.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+        supportActionBar?.apply {
+            title = "RETURN YOUR BIKE"
+        }
 
         val btnPic = binding.btnTakePic
         val btnscan = binding.btnscanReturn

@@ -39,10 +39,10 @@
         tools:layout="@layout/fragment_add_location">
         <action
             android:id="@+id/action_nav_addLocationFragment_to_locationSuccessFragment"
-            app:destination="@id/locationSuccessFragment" />
+            app:destination="@id/nav_locationSuccessFragment" />
     </fragment>
     <fragment
-        android:id="@+id/locationSuccessFragment"
+        android:id="@+id/nav_locationSuccessFragment"
         android:name="my.edu.tarc.ezbike_v1.adminSide.ui.location.LocationSuccessFragment"
         android:label="fragment_location_success"
         tools:layout="@layout/fragment_location_success" />

@@ -2,21 +2,27 @@ package my.edu.tarc.ezbike_v1.adminSide.ui.admin
 
 import FirebaseListener
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.MenuProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import my.edu.tarc.ezbike_v1.R
 import my.edu.tarc.ezbike_v1.adminSide.viewModel.BikeVM
 import my.edu.tarc.ezbike_v1.adminSide.viewModel.BikeVMProvider
 import my.edu.tarc.ezbike_v1.adminSide.viewModel.LocationVM
 import my.edu.tarc.ezbike_v1.adminSide.viewModel.LocationVMProvider
 import my.edu.tarc.ezbike_v1.databinding.FragmentAdminBinding
+import my.edu.tarc.ezbike_v1.user_management.Entry
 
-class AdminFragment : Fragment() {
+class AdminFragment : Fragment(), MenuProvider {
 
+    private lateinit var firebaseAuth: FirebaseAuth
     private var _binding: FragmentAdminBinding? = null
     private val binding get() = _binding!!
 
@@ -34,10 +40,13 @@ class AdminFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentAdminBinding.inflate(inflater, container, false)
 
+        firebaseAuth = FirebaseAuth.getInstance()
 //        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
 //            //do nth = disable back button function
 //        }
-        setMenuVisibility(true)
+//        setMenuVisibility(true)
+
+
         var backPressedTime = 0L
         val BACK_PRESSED_INTERVAL = 2000 // 2 seconds
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true){
@@ -75,14 +84,6 @@ class AdminFragment : Fragment() {
         binding.btnLocation.setOnClickListener {
             findNavController().navigate(R.id.action_nav_adminFragment_to_nav_locationFragment)
         }
-
-        binding.FABtnLogout.setOnClickListener {
-//            findNavController().navigate(R.id.action_nav_adminFragment_to_nav_loginFragment)
-            findNavController().popBackStack()
-        }
-
-
-
     }
 
 
@@ -92,6 +93,20 @@ class AdminFragment : Fragment() {
 //        locationRef.removeEventListener(firebaseListener)
 //        bikeRef.removeEventListener(firebaseListener)
 //    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater){
+        menuInflater.inflate(R.menu.menu2, menu)
+        menu.findItem(R.id.action_logout).isVisible = false;
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if(menuItem.itemId == android.R.id.home){
+            findNavController().navigateUp()
+        }
+        return true
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

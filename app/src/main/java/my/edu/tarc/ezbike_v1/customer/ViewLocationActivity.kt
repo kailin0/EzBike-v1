@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.graphics.drawable.ColorDrawable
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
@@ -15,8 +16,12 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.*
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -50,7 +55,7 @@ class ViewLocationActivity() : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationRequest: LocationRequest
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var mMarker: Marker? = null
-
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +69,14 @@ class ViewLocationActivity() : AppCompatActivity(), OnMapReadyCallback {
         val editTextSearch: EditText = findViewById(R.id.editTextSearch)
         val supportMapFragment = SupportMapFragment.newInstance()
 
+        //
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.lightBrown)))
+        supportActionBar!!.elevation = 0F
+        supportActionBar!!.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+        supportActionBar?.apply {
+            title = "START YOUR JOURNEY"
+        }
 
         supportFragmentManager.beginTransaction().add(R.id.fragmentMap, supportMapFragment)
             .commit()

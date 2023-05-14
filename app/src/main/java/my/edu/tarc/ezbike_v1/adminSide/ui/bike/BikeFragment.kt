@@ -87,6 +87,10 @@ class BikeFragment : Fragment(), MenuProvider{
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if(menuItem.itemId == android.R.id.home){
+            findNavController().navigateUp()
+        }
+
         if(menuItem.itemId == R.id.action_search) {
 //            searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
 //                override fun onQueryTextSubmit(query: String?): Boolean {

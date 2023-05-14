@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
+import my.edu.tarc.ezbike_v1.R
 
 
 class ScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
@@ -28,7 +30,10 @@ class ScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         setContentView(scannerView)
         Firebase.firestore
 
-
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.lightBrown)))
+        supportActionBar!!.elevation = 0F
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
         setPermission()
     }
 

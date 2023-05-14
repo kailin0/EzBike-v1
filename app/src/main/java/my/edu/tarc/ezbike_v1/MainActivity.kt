@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
+import my.edu.tarc.ezbike_v1.customer.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.lightBrown)))
         supportActionBar!!.elevation = 0F
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+
 
         //for up button
         appBarConfiguration = AppBarConfiguration(

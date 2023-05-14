@@ -75,6 +75,7 @@
     <string name="tq">Thanks for using EzBike</string>
     <string name="tq_overtime">Thanks for using EzBike, but your credential has decreased</string>
     <string name="credibilty">Credibility</string>
+    <string name="pendingLbl">Pending (days)</string>
     <string name="pending1">Pending for 1 day</string>
     <string name="pending2">Pending for 1 week</string>
     <string name="pending3">Pending for 1 month</string>
@@ -92,12 +93,13 @@
     </string-array>
     <string name="not_ur">Different Bike</string>
 
+    <!--return status-->
+    <string name="pendingdesc">You are not allow to lend bike in the future</string>
+
 
     <!-- admin -->
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btnLogin">Login</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="toolbarViewLocationList">MANAGE LOCATION</string>
     <string name="manageLocation_title">MANAGE LOCATION</string>
     <string name="search_location">Search</string>
