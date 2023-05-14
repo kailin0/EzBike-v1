@@ -56,6 +56,10 @@ class AddBikeFragment : Fragment() {
             bikeAvailability = arguments?.getString("bike_availability")
 //            bikeQRCode = arguments?.getString("")
             binding.etptBikeSerialNo.setText(bikeSerialNo)
+            binding.etptBikeSerialNo.isClickable = false
+            binding.etptBikeSerialNo.isEnabled = false
+//            binding.btnQR.isClickable = fasle
+            binding.btnQR.isEnabled = false
 //            binding.ivQR.setImageDrawable()
 //            binding.bikeAvailability.checkedRadioButtonId = binding.bikeAvailability
         }

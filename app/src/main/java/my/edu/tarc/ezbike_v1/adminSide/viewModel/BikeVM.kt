@@ -72,12 +72,17 @@ class BikeVM(private val dao: bikeDAO) : ViewModel() {
     fun updateBike(bikeData: BikeData?) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                if (bikeData != null) {
-                    dao.updateBike(bikeData)
-                    saveBikesToFirebase()
-                    isBikeUpdate=true
+                var count = dao.getBikeCount(bikeData!!.bikeSerialNO)
+                if(count==0){
+                    if (bikeData != null) {
+                        dao.updateBike(bikeData)
+//                        _toastMessage.postValue("Location Added Successfully")
+                        saveBikesToFirebase()
+                        isBikeUpdate=true
+                    }
                 }
                 else{
+//                    _toastMessage.postValue("Location Already Exist")
                     isBikeUpdate=false
                 }
             }
