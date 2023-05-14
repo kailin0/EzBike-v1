@@ -154,7 +154,6 @@ class BikeFragment : Fragment(), MenuProvider{
 
     private fun displayLocationList(){
         viewmodel.bikeList.observe(viewLifecycleOwner, Observer {
-//            oriList = it
 //            Log.d("LocationFragment", "Original List size: ${oriList.size}")
             adaptor.setList(it)
             adaptor.notifyDataSetChanged()
